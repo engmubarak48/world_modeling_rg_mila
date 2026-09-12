@@ -1,4 +1,4 @@
-# World Modelling Reading Group
+# Mila World Modelling Reading Group
 
 Source for the reading group website. Built with [Hugo](https://gohugo.io/); one page, no theme.
 
@@ -74,8 +74,11 @@ hugo server -D     # http://localhost:1313
 
 ## Deploying
 
+Remote: `git@github.com:engmubarak48/world_modeling_rg_mila.git`
+
 Pushing to `main` builds and publishes via `.github/workflows/hugo.yml`. One-time setup: in the
-repo, **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+repo, **Settings → Pages → Build and deployment → Source: GitHub Actions**. The site then lives
+at `https://engmubarak48.github.io/world_modeling_rg_mila/`.
 
 The workflow passes the correct `baseURL` at build time, so the value in `hugo.toml` only matters
 for local previews — but update it anyway once the final URL is known.
