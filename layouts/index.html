@@ -49,10 +49,17 @@
     <ul class="organizers">
       {{ range . }}
         <li class="organizer">
-          {{ with .image }}
-          <img class="organizer__photo" src="{{ . | relURL }}" alt="" loading="lazy">
+          {{- /* Photo is assets/images/organizers/<first name>.<any extension>,
+                 or <photo>.<ext> when the entry overrides the name. Cropped to
+                 a square automatically, so any aspect ratio works. */ -}}
+          {{ $slug := .photo | default (lower (index (split .name " ") 0)) }}
+          {{ $img := resources.GetMatch (printf "images/organizers/%s.*" $slug) }}
+          {{ with $img }}
+            {{ $sq := .Fill "208x208 Center" }}
+            <img class="organizer__photo" src="{{ $sq.RelPermalink }}"
+                 width="104" height="104" alt="" loading="lazy">
           {{ else }}
-          <span class="organizer__photo organizer__photo--blank" aria-hidden="true"></span>
+            <span class="organizer__photo organizer__photo--blank" aria-hidden="true"></span>
           {{ end }}
           <p class="organizer__name">
             {{ if .url }}<a href="{{ .url }}">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}

@@ -1,23 +1,44 @@
 # Organizers shown at the bottom of the page, in this order.
 #
-# `name` is required. `url` turns the name into a link; `image` is a square
-# headshot in static/images/organizers/ (shown above the name). Anyone without
-# an image gets a neutral grey circle.
+# `name` is required. `url` turns the name into a link.
 #
-# - name: "Name Surname"
-#   affiliation: "Mila, Université de Montréal"
-#   url: "https://their-website.com"
-#   image: "/images/organizers/name.jpg"
+# Photos are picked up automatically from assets/images/organizers/ by first
+# name, in any format: arian.jpg, artem.png, roger.webp all work. They are
+# cropped to a square and resized at build time, so any size or aspect ratio is
+# fine — no need to crop them first. Anyone without a photo gets a grey circle.
+#
+# Add `photo:` only when the filename is not the lowercased first name
+# (see Thuy below).
 
 - name: "Rodrigue de Schaetzen"
   affiliation: "Mila, Université de Montréal"
   url: "https://rdesc.dev/"
-  image: "/images/organizers/rod.png"
 
 - name: "Jama Hussein Mohamud"
   affiliation: "Mila, Université de Montréal"
   url: "https://jamamohamud.com/"
-  image: "/images/organizers/jama.jpg"
 
-- name: "TBD"
-  affiliation: "Mila"
+- name: "Arian Khorasani"
+  affiliation: "Mila, Université de Montréal"
+  url: "https://sites.google.com/view/ariankhorasani"
+
+- name: "Artem Zholus"
+  affiliation: "Mila, Polytechnique Montréal"
+  url: "https://artemzholus.github.io/"
+
+- name: "Hafez Ghaemi"
+  affiliation: "Mila, Université de Montréal"
+  url: "https://hafezgh.github.io/"
+
+- name: "Le Thuy Duong Nguyen"
+  affiliation: "Mila, McGill University"
+  url: "https://mila.quebec/en/directory/le-thuy-duong-nguyen"
+  photo: "thuy"
+
+- name: "Roger Girgis"
+  affiliation: "Mila, Polytechnique Montréal"
+  url: "https://mila.quebec/en/directory/roger-girgis"
+
+- name: "Xiaofeng Zhang"
+  affiliation: "Mila, Université de Montréal"
+  url: "https://zhang-guigui.github.io/"

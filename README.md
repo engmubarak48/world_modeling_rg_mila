@@ -36,9 +36,17 @@ remove it afterwards.
 
 ### Organizer photos
 
-Put square images in `static/images/organizers/` and point at them from
-`data/organizers.yaml` (`image: "/images/organizers/name.jpg"`). Anyone without a photo gets a
-neutral grey circle, so it looks fine either way.
+Drop the file in `assets/images/organizers/`, named after the person's **lowercased first name**
+— `arian.jpg`, `artem.png`, `roger.webp`. Nothing else to do: it is matched by name, cropped to
+a square and resized at build time, so any size or aspect ratio works and there is no need to
+crop it first. Anyone without a photo gets a neutral grey circle.
+
+If a filename cannot be the first name, add `photo:` to that entry in `data/organizers.yaml`:
+
+```yaml
+- name: "Le Thuy Duong Nguyen"
+  photo: "thuy"      # looks for assets/images/organizers/thuy.*
+```
 
 ## Contact form
 
