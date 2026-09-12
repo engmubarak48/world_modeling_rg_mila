@@ -7,8 +7,8 @@
 # cropped to a square and resized at build time, so any size or aspect ratio is
 # fine — no need to crop them first. Anyone without a photo gets a grey circle.
 #
-# Add `photo:` only when the filename is not the lowercased first name
-# (see Thuy below).
+# Add `photo: "othername"` to an entry only when the file cannot be named after
+# the lowercased first name.
 
 - name: "Rodrigue de Schaetzen"
   affiliation: "Mila, Université de Montréal"
@@ -33,7 +33,6 @@
 - name: "Le Thuy Duong Nguyen"
   affiliation: "Mila, McGill University"
   url: "https://mila.quebec/en/directory/le-thuy-duong-nguyen"
-  photo: "thuy"
 
 - name: "Roger Girgis"
   affiliation: "Mila, Polytechnique Montréal"
