@@ -1,0 +1,12 @@
+{{ define "main" }}
+  <article class="prose">
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+
+    {{ if .Params.form }}
+      {{ partial "contact-form.html" . }}
+    {{ end }}
+  </article>
+
+  <p class="back"><a href="{{ "/" | relURL }}">&larr; Back to the reading group</a></p>
+{{ end }}

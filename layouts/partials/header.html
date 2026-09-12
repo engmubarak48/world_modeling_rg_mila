@@ -1,0 +1,8 @@
+<header class="site-header">
+  <a href="{{ "/" | relURL }}" class="name">{{ site.Params.author | default site.Title }}</a>
+  <nav class="site-nav">
+    <a href="{{ "/" | relURL }}#schedule">Schedule</a>
+    <a href="{{ "/" | relURL }}#organizers">Organizers</a>
+    <a href="{{ partial "contact-url.html" . }}"{{ if and .IsPage (eq .RelPermalink ("/contact/" | relURL)) }} class="active"{{ end }}>Contact</a>
+  </nav>
+</header>

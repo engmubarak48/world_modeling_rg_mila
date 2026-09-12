@@ -1,0 +1,15 @@
+# The schedule, newest at the top.
+#
+# Each "- " block is one session. Only `date` and `paper` are required;
+# everything else is optional and is simply left out when blank.
+#
+# - date: "Oct 3, 2026"
+#   presenter: "Name Surname"
+#   paper: "Title of the paper"
+#   note: "Optional one-line comment, e.g. a theme or a second paper."
+#   upcoming: true          # adds an "Upcoming" badge; remove once it has happened
+#   links:
+#     paper: "https://arxiv.org/abs/..."
+#     video: "https://youtu.be/..."     # optional recording
+#     slides: "https://..."             # optional
+#     code: "https://github.com/..."    # optional

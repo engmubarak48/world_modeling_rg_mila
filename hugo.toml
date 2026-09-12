@@ -1,0 +1,42 @@
+# The deploy workflow passes the real URL at build time, so "/" is fine here
+# and keeps `hugo server` clean. Change it if you build by hand.
+baseURL = "/"
+title = "Mila World Modelling Reading Group"
+
+# One page — no tags/categories pages needed.
+disableKinds = ["taxonomy", "term", "RSS"]
+
+[params]
+  # Shown in the header and footer
+  author = "Mila World Modelling Reading Group"
+  short = "Mila World Modelling RG"
+  description = "A weekly reading group at Mila on world models, video generation, and model-based agents."
+  footer = "Mila World Modelling Reading Group"
+
+  # Practical details shown under the intro. Leave any of these blank ("") to hide.
+  when = "Fridays, 11:00–12:00 (ET)"
+  where = "Mila, Auditorium 1 — and on Zoom"
+  # Heading for the schedule section. "Schedule", "Talks", "Past sessions"...
+  sessionsHeading = "Schedule"
+
+  # Where the "Contact" link goes. Leave "" to use the built-in /contact/ page.
+  # Set it to send people somewhere else entirely — a Google Form, a Slack
+  # invite, or another organizer's page — and nothing links to /contact/ any more.
+  # (Delete content/contact.md too if you want that page gone for good.)
+  contactURL = ""
+
+  # Used by the built-in /contact/ page only. Create a free form at
+  # https://formspree.io/ and paste its endpoint here (https://formspree.io/f/abcdwxyz).
+  # Leave "" and the Send button stays disabled with a mailto fallback.
+  formEndpoint = ""
+  # Fallback address, also used in the form's confirmation text.
+  email = "hussein-mohamu.jama@mila.quebec"
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    noClasses = false
+
+[params.date]
+  format = "Jan 2, 2006"

@@ -1,0 +1,21 @@
+# Organizers shown at the bottom of the page, in this order.
+#
+# `name` is required. `url` turns the name into a link; `image` is a square
+# headshot in static/images/organizers/ (shown above the name). Anyone without
+# an image gets a neutral grey circle.
+#
+# - name: "Name Surname"
+#   affiliation: "Mila, Université de Montréal"
+#   url: "https://their-website.com"
+#   image: "/images/organizers/name.jpg"
+
+- name: "TBD"
+  affiliation: "Mila"
+
+- name: "Jama Hussein Mohamud"
+  affiliation: "Mila, Université de Montréal"
+  url: "https://jamamohamud.com/"
+  image: "/images/organizers/jama.jpg"
+
+- name: "TBD"
+  affiliation: "Mila"

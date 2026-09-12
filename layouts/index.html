@@ -1,0 +1,73 @@
+{{ define "main" }}
+
+  <section class="intro bio">
+    {{ .Content }}
+
+    {{ if or site.Params.when site.Params.where }}
+    <dl class="facts">
+      {{ with site.Params.when }}<dt>When</dt><dd>{{ . }}</dd>{{ end }}
+      {{ with site.Params.where }}<dt>Where</dt><dd>{{ . | safeHTML }}</dd>{{ end }}
+    </dl>
+    {{ end }}
+  </section>
+
+  <section id="schedule">
+    <h2>{{ site.Params.sessionsHeading | default "Schedule" }}</h2>
+    {{ with hugo.Data.sessions }}
+    <ul class="sessions">
+      {{ range . }}
+        <li class="session{{ if .upcoming }} is-upcoming{{ end }}">
+          <div class="session__date">
+            {{ .date }}
+            {{ if .upcoming }}<span class="badge">Upcoming</span>{{ end }}
+          </div>
+          <div class="session__body">
+            <p class="session__paper">
+              {{ $href := "" }}{{ with .links }}{{ $href = .paper }}{{ end }}
+              {{ if $href }}<a href="{{ $href }}">{{ .paper | safeHTML }}</a>{{ else }}{{ .paper | safeHTML }}{{ end }}
+            </p>
+            {{ with .presenter }}<p class="session__presenter">Presented by {{ . | safeHTML }}</p>{{ end }}
+            {{ with .note }}<p class="session__note">{{ . | safeHTML }}</p>{{ end }}
+            {{ if .links }}
+            <p class="session__links">
+              {{ with .links.paper }}<a href="{{ . }}">Paper</a>{{ end }}
+              {{ with .links.video }}<a href="{{ . }}">Recording</a>{{ end }}
+              {{ with .links.slides }}<a href="{{ . }}">Slides</a>{{ end }}
+              {{ with .links.code }}<a href="{{ . }}">Code</a>{{ end }}
+            </p>
+            {{ end }}
+          </div>
+        </li>
+      {{ end }}
+    </ul>
+    {{ end }}
+  </section>
+
+  {{ with hugo.Data.organizers }}
+  <section id="organizers">
+    <h2>Organizers</h2>
+    <ul class="organizers">
+      {{ range . }}
+        <li class="organizer">
+          {{ with .image }}
+          <img class="organizer__photo" src="{{ . | relURL }}" alt="" loading="lazy">
+          {{ else }}
+          <span class="organizer__photo organizer__photo--blank" aria-hidden="true"></span>
+          {{ end }}
+          <p class="organizer__name">
+            {{ if .url }}<a href="{{ .url }}">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}
+          </p>
+          {{ with .affiliation }}<p class="organizer__affil">{{ . }}</p>{{ end }}
+        </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  <section id="contact">
+    <h2>Get in touch</h2>
+    <p class="contact__lede">To join the mailing list, propose a paper, or sign up to present:</p>
+    <p><a class="button" href="{{ partial "contact-url.html" . }}">Get in touch</a></p>
+  </section>
+
+{{ end }}
