@@ -9,8 +9,10 @@
 #   url: "https://their-website.com"
 #   image: "/images/organizers/name.jpg"
 
-- name: "TBD"
-  affiliation: "Mila"
+- name: "Rodrigue de Schaetzen"
+  affiliation: "Mila, Université de Montréal"
+  url: "https://rdesc.dev/"
+  image: "/images/organizers/rod.png"
 
 - name: "Jama Hussein Mohamud"
   affiliation: "Mila, Université de Montréal"
