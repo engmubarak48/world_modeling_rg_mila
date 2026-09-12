@@ -1,25 +1,24 @@
 # Mila World Modelling Reading Group
 
-Source for the reading group website. Built with [Hugo](https://gohugo.io/); one page, no theme.
+Website for the reading group. Built with [Hugo](https://gohugo.io/) — one page, no theme.
 
-## Editing
+```bash
+hugo server     # http://localhost:1313
+```
 
-Almost everything lives in two YAML files — no HTML needed.
+## What to edit
 
-| What | File |
+| What | Where |
 |---|---|
-| Intro paragraphs | `content/_index.md` |
-| Sessions (presenter, paper, links) | `data/sessions.yaml` |
+| Intro text | `content/_index.md` |
+| Schedule | `data/sessions.yaml` |
 | Organizers | `data/organizers.yaml` |
-| Intro text on the contact page | `content/contact.md` |
-| Time, place, section heading, contact link | `hugo.toml` |
-| Styling (colors, spacing) | `assets/css/site.css` |
+| Time, place, contact settings | `hugo.toml` |
+| Styling | `assets/css/site.css` |
 
 ### Adding a session
 
-The list starts empty — nothing renders until you add entries.
-
-Add a block at the **top** of `data/sessions.yaml`:
+Newest at the top of `data/sessions.yaml`:
 
 ```yaml
 - date: "Oct 10, 2026"
@@ -30,77 +29,44 @@ Add a block at the **top** of `data/sessions.yaml`:
     video: "https://youtu.be/..."   # optional
 ```
 
-`presenter`, `note`, `upcoming` and every link are optional; anything you leave out simply
-doesn't render. Put `upcoming: true` on the next session to give it an "Upcoming" badge, and
-remove it afterwards.
+Only `date` and `paper` are required. `upcoming: true` adds an "Upcoming" badge — remove it
+after the session happens.
 
-### Organizer photos
-
-Drop the file in `assets/images/organizers/`, named after the person's **lowercased first name**
-— `arian.jpg`, `artem.png`, `roger.webp`. Nothing else to do: it is matched by name, cropped to
-a square and resized at build time, so any size or aspect ratio works and there is no need to
-crop it first. Anyone without a photo gets a neutral grey circle.
-
-If a filename cannot be the first name, add `photo:` to that entry in `data/organizers.yaml`:
+### Adding an organizer
 
 ```yaml
-- name: "Le Thuy Duong Nguyen"
-  photo: "thuy"      # looks for assets/images/organizers/thuy.*
+- name: "Name Surname"
+  affiliation: "Mila, Université de Montréal"
+  url: "https://their-website.com"    # optional
 ```
+
+For the photo, drop a file in `assets/images/organizers/` named after their lowercased first
+name — `arian.jpg`, `artem.png`, any format. It gets cropped square and resized automatically,
+so no need to prepare it. No photo means a grey circle.
+
+If the filename can't be the first name, add `photo: "othername"` to their entry.
 
 ## Contact form
 
 The form on `/contact/` posts to [FormSubmit](https://formsubmit.co/), which emails submissions
-straight to the address in `formEndpoint` (`hugo.toml`). There is no account and no server — a
-static site cannot send email on its own, so some third-party handler is required.
+to the address in `formEndpoint`. A static site can't send email itself, so it needs a handler
+like this.
 
-**One-time activation:** the first time anyone submits the form, FormSubmit emails that address
-a confirmation with an "Activate Form" button. Click it once and the form is live for good.
-Until then submissions are not delivered, so send one test message yourself after the site goes
-up.
+**The form must be activated once.** On the first submission FormSubmit emails that address an
+"Activate Form" link. Until someone clicks it, nothing is delivered — so send a test message
+yourself before announcing the site.
 
-**Worth doing later:** the address currently sits in the page's HTML, where scrapers can read it.
-After activation FormSubmit emails you a random-string endpoint that does the same job without
-exposing it — swap it in:
+After activating, FormSubmit gives you a random-string endpoint that hides the address from
+scrapers. Worth swapping in:
 
 ```toml
 formEndpoint = "https://formsubmit.co/your-random-string"
 ```
 
-On submission people land on `/thanks/` (`content/thanks.md`); FormSubmit shows its own page if
-that redirect is unavailable. The hidden `_honey` field is a spam trap FormSubmit honours.
-
-### Sending people somewhere else instead
-
-To hand contact to another organizer — a Google Form, a Slack invite, their own page — set one
-line in `hugo.toml`:
-
-```toml
-contactURL = "https://forms.gle/..."
-```
-
-Both the nav link and the button then point there, and `/contact/` is no longer linked. Delete
-`content/contact.md` if you want that page gone entirely.
-
-### Switching to Formspree
-
-If FormSubmit is ever a problem, [Formspree](https://formspree.io/) is the usual alternative
-(free tier, needs an account). Paste its endpoint into `formEndpoint` and rename the `_honey`
-field to `_gotcha` in `layouts/partials/contact-form.html`.
-
-## Running locally
-
-```bash
-hugo server -D     # http://localhost:1313
-```
+To point contact somewhere else entirely — a Google Form, a Slack invite — set `contactURL` in
+`hugo.toml` and both the nav link and the button follow it.
 
 ## Deploying
 
-Remote: `git@github.com:engmubarak48/world_modeling_rg_mila.git`
-
-Pushing to `main` builds and publishes via `.github/workflows/hugo.yml`. One-time setup: in the
-repo, **Settings → Pages → Build and deployment → Source: GitHub Actions**. The site then lives
-at `https://engmubarak48.github.io/world_modeling_rg_mila/`.
-
-The workflow passes the correct `baseURL` at build time, so the value in `hugo.toml` only matters
-for local previews — but update it anyway once the final URL is known.
+Push to `main`; GitHub Actions builds and publishes. One-time setup:
+**Settings → Pages → Source: GitHub Actions**.
