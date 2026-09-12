@@ -1,5 +1,6 @@
 {{ $endpoint := site.Params.formEndpoint }}
-<form class="contact-form" action="{{ $endpoint }}" method="POST"{{ if not $endpoint }} data-inactive{{ end }}>
+{{ $thanks := "thanks/" | absURL }}
+<form class="contact-form" action="{{ $endpoint }}" method="POST">
   <div class="field">
     <label for="name">Name</label>
     <input type="text" id="name" name="name" autocomplete="name" required>
@@ -12,12 +13,12 @@
     <label for="message">Message</label>
     <textarea id="message" name="message" rows="5" required></textarea>
   </div>
+
+  <input type="hidden" name="_subject" value="{{ site.Title }} — website enquiry">
+  <input type="hidden" name="_captcha" value="false">
+  {{ if hasPrefix $thanks "http" }}<input type="hidden" name="_next" value="{{ $thanks }}">{{ end }}
   <!-- Spam trap: real people leave this empty. -->
-  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
-  <button type="submit"{{ if not $endpoint }} disabled{{ end }}>Send</button>
-  {{ if not $endpoint }}
-  <p class="form-note">Not connected yet — add a Formspree endpoint as <code>formEndpoint</code>
-    in <code>hugo.toml</code>. Until then, email
-    <a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a>.</p>
-  {{ end }}
+  <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+  <button type="submit">Send</button>
 </form>

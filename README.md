@@ -40,31 +40,45 @@ Put square images in `static/images/organizers/` and point at them from
 `data/organizers.yaml` (`image: "/images/organizers/name.jpg"`). Anyone without a photo gets a
 neutral grey circle, so it looks fine either way.
 
-## Contact
+## Contact form
 
-The "Contact" link in the nav has two modes, set in `hugo.toml`.
+The form on `/contact/` posts to [FormSubmit](https://formsubmit.co/), which emails submissions
+straight to the address in `formEndpoint` (`hugo.toml`). There is no account and no server — a
+static site cannot send email on its own, so some third-party handler is required.
 
-**Point it somewhere else.** If the form should be run by another organizer — a Google Form, a
-Slack invite, a personal page — just set:
+**One-time activation:** the first time anyone submits the form, FormSubmit emails that address
+a confirmation with an "Activate Form" button. Click it once and the form is live for good.
+Until then submissions are not delivered, so send one test message yourself after the site goes
+up.
+
+**Worth doing later:** the address currently sits in the page's HTML, where scrapers can read it.
+After activation FormSubmit emails you a random-string endpoint that does the same job without
+exposing it — swap it in:
+
+```toml
+formEndpoint = "https://formsubmit.co/your-random-string"
+```
+
+On submission people land on `/thanks/` (`content/thanks.md`); FormSubmit shows its own page if
+that redirect is unavailable. The hidden `_honey` field is a spam trap FormSubmit honours.
+
+### Sending people somewhere else instead
+
+To hand contact to another organizer — a Google Form, a Slack invite, their own page — set one
+line in `hugo.toml`:
 
 ```toml
 contactURL = "https://forms.gle/..."
 ```
 
-Nothing else needs to change; the link goes straight there. Delete `content/contact.md` if you
-want the built-in page gone entirely.
+Both the nav link and the button then point there, and `/contact/` is no longer linked. Delete
+`content/contact.md` if you want that page gone entirely.
 
-**Or use the built-in page** at `/contact/`. Leave `contactURL = ""`, create a free form at
-[formspree.io](https://formspree.io/), and paste its endpoint:
+### Switching to Formspree
 
-```toml
-formEndpoint = "https://formspree.io/f/abcdwxyz"
-```
-
-Submissions are emailed to whoever owns the Formspree form, so it can sit with any organizer.
-The form has a hidden `_gotcha` spam trap that Formspree honours automatically. With
-`formEndpoint` blank, the page still renders but Send is disabled and a mailto fallback shows —
-that is the current state.
+If FormSubmit is ever a problem, [Formspree](https://formspree.io/) is the usual alternative
+(free tier, needs an account). Paste its endpoint into `formEndpoint` and rename the `_honey`
+field to `_gotcha` in `layouts/partials/contact-form.html`.
 
 ## Running locally
 

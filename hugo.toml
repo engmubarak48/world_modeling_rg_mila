@@ -25,11 +25,14 @@ disableKinds = ["taxonomy", "term", "RSS"]
   # (Delete content/contact.md too if you want that page gone for good.)
   contactURL = ""
 
-  # Used by the built-in /contact/ page only. Create a free form at
-  # https://formspree.io/ and paste its endpoint here (https://formspree.io/f/abcdwxyz).
-  # Leave "" and the Send button stays disabled with a mailto fallback.
-  formEndpoint = ""
-  # Fallback address, also used in the form's confirmation text.
+  # Where the contact form posts. This is a FormSubmit endpoint: messages are
+  # emailed straight to the address below, with no account to set up. The first
+  # submission triggers a one-time "Activate Form" email — click it once and the
+  # form is live. See the README for swapping in a masked endpoint or a
+  # different service.
+  formEndpoint = "https://formsubmit.co/hussein-mohamu.jama@mila.quebec"
+
+  # Contact address, used as a fallback link if the form is ever removed.
   email = "hussein-mohamu.jama@mila.quebec"
 
 [markup]
