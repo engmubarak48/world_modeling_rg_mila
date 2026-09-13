@@ -25,15 +25,10 @@ disableKinds = ["taxonomy", "term", "RSS"]
   # (Delete content/contact.md too if you want that page gone for good.)
   contactURL = ""
 
-  # Where the contact form posts. This is a FormSubmit endpoint: messages are
-  # emailed straight to the address below, with no account to set up. The first
-  # submission triggers a one-time "Activate Form" email — click it once and the
-  # form is live. See the README for swapping in a masked endpoint or a
-  # different service.
-  formEndpoint = "https://formsubmit.co/mila-world-modelling-rg@googlegroups.com"
+  # Where the contact form posts: a FormSubmit endpoint that forwards messages to
+  # the organizers' Google Group. The random string hides the group address.
+  formEndpoint = "https://formsubmit.co/7ce1947f8662034d27f53e6f3af90463"
 
-  # Contact address, used as a fallback link if the form is ever removed.
-  email = "mila-world-modelling-rg@googlegroups.com"
 
 [markup]
   [markup.goldmark.renderer]

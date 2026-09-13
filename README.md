@@ -4,7 +4,7 @@ The Mila World Modelling Reading Group meets weekly at [Mila](https://mila.quebe
 recent work on world models.
 
 **Website:** https://mila-world-modelling.github.io/world_modeling_rg/
-**Contact:** mila-world-modelling-rg@googlegroups.com
+**Contact:** use the [contact form](https://mila-world-modelling.github.io/world_modeling_rg/contact/)
 
 ## Updating the site
 
