@@ -3,7 +3,7 @@
 The Mila World Modelling Reading Group meets weekly at [Mila](https://mila.quebec/) to discuss
 recent work on world models.
 
-**Website:** https://engmubarak48.github.io/world_modeling_rg_mila/
+**Website:** https://mila-world-modelling.github.io/world_modeling_rg/
 **Contact:** mila-world-modelling-rg@googlegroups.com
 
 ## Updating the site
