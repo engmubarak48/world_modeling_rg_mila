@@ -1,3 +1,3 @@
 {{- /* Where "Contact" points: an external form if params.contactURL is set
        (e.g. a Google Form run by another organizer), else the local page. */ -}}
-{{- with site.Params.contactURL }}{{ . }}{{ else }}{{ "/contact/" | relURL }}{{ end -}}
+{{- with site.Params.contactURL }}{{ . }}{{ else }}{{ "contact/" | relURL }}{{ end -}}
