@@ -30,10 +30,10 @@ disableKinds = ["taxonomy", "term", "RSS"]
   # submission triggers a one-time "Activate Form" email — click it once and the
   # form is live. See the README for swapping in a masked endpoint or a
   # different service.
-  formEndpoint = "https://formsubmit.co/hussein-mohamu.jama@mila.quebec"
+  formEndpoint = "https://formsubmit.co/mila-world-modelling-rg@googlegroups.com"
 
   # Contact address, used as a fallback link if the form is ever removed.
-  email = "hussein-mohamu.jama@mila.quebec"
+  email = "mila-world-modelling-rg@googlegroups.com"
 
 [markup]
   [markup.goldmark.renderer]
